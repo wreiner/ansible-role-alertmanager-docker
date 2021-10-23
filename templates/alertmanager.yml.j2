@@ -1,0 +1,17 @@
+global:
+  # The smarthost and SMTP sender used for mail notifications.
+  smtp_smarthost: '{{ alertmanager_docker__smtp_smarthost }}'
+  smtp_from: '{{ alertmanager_docker__smtp_from }}'
+  smtp_auth_username: '{{ alertmanager_docker__smtp_auth_username }}'
+  smtp_auth_password: '{{ alertmanager_docker__smtp_auth_password }}'
+
+route:
+  group_by: ['alertname']
+
+  # A default receiver
+  receiver: default-mails
+
+receivers:
+- name: 'default-mails'
+  email_configs:
+  - to: '{{ alertmanager_docker__default_mail_receiver_address }}'

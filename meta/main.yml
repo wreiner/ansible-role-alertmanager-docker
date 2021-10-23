@@ -1,0 +1,17 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: alertmanager-docker
+  author: wreiner
+  description: Ansible role to create alertmanager docker container.
+  company: "wreiner.at"
+  license: "license (BSD, MIT)"
+  min_ansible_version: 2.4
+  platforms:
+    - name: Debian
+      versions:
+        - 11
+  galaxy_tags:
+    - container
+    - monitoring

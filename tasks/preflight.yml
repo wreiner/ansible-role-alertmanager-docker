@@ -1,0 +1,11 @@
+---
+- name: "Create additional Alertmanager directories"
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ alertmanager_docker__system_user }}"
+    group: "{{ alertmanager_docker__system_group }}"
+    mode: 0750
+  with_items:
+    - "{{ alertmanager_docker__data_dir }}/etc"
+    - "{{ alertmanager_docker__data_dir }}/data"

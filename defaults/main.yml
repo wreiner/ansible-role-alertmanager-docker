@@ -1,0 +1,11 @@
+---
+alertmanager_docker__image: "prom/alertmanager"
+alertmanager_docker__alertmanager_version: "v0.23.0"
+
+alertmanager_docker__data_dir: "/var/lib/docker/volumes/alertmanager"
+alertmanager_docker__config_dir: "{{ alertmanager_docker__data_dir }}/etc"
+
+alertmanager_docker__timezone: "Europe/Vienna"
+
+alertmanager_docker__system_user: "nobody"
+alertmanager_docker__system_group: "nogroup"

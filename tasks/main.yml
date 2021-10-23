@@ -1,0 +1,17 @@
+---
+- include_tasks: "preflight.yml"
+
+- name: "Deploy Alertmanager service file"
+  template:
+    src: "alertmanager.service.j2"
+    dest: "/etc/systemd/system/alertmanager.service"
+  notify: "Restart alertmanager"
+
+- name: "Deploy Alertmanager config file"
+  template:
+    src: "alertmanager.yml.j2"
+    dest: "{{ alertmanager_docker__data_dir }}/etc/alertmanager.yml"
+    owner: "{{ alertmanager_docker__system_user }}"
+    group: "{{ alertmanager_docker__system_group }}"
+    mode: 0640
+  notify: "Restart alertmanager"
