@@ -11,7 +11,15 @@ route:
   # A default receiver
   receiver: default-mails
 
+  {% if alertmanager_docker__additional_routes is defined %}
+  {{ alertmanager_docker__additional_routes | to_yaml }}
+  {% endif %}
+
 receivers:
 - name: 'default-mails'
   email_configs:
   - to: '{{ alertmanager_docker__default_mail_receiver_address }}'
+
+{% if alertmanager_docker__additional_receivers is defined %}
+{{ alertmanager_docker__additional_receivers | to_yaml }}
+{% endif %}

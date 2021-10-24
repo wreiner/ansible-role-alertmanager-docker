@@ -25,6 +25,27 @@ alertmanager_docker__default_mail_receiver_address: "recipient@somewhere.me"
 
 ## Optional Role Variables
 
+It is possible to add additional routes and receivers:
+
+```
+alertmanager_docker__additional_routes:
+  routes:
+  - matchers:
+    - severity="critical"
+    receiver: 'pushsafer-webhook'
+
+alertmanager_docker__additional_receivers:
+  - name: 'pushsafer-webhook'
+    webhook_configs:
+    - url: http://<host-or-ip>:9196/alert
+      send_resolved: true
+      http_config:
+        basic_auth:
+          username: 'user'
+          password: 'password'
+
+```
+
 Specify the alertmanager version you want to deploy:
 
 ```
